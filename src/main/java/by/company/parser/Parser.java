@@ -1,7 +1,6 @@
 package by.company.parser;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.regex.Pattern;
 
@@ -16,7 +15,6 @@ public class Parser {
         readXMLData();
         formattingDate();
         createElements();
-        getNameRoot();
     }
 
     public void readXMLData() {
@@ -49,7 +47,6 @@ public class Parser {
         String closeTagRegex = "</\\p{Alpha}+>";
         Pattern patternCloseTag = Pattern.compile(closeTagRegex);
         Pattern pattern = Pattern.compile(openTagRegex);
-
         for (int i = 0; i < formatDate.length; ++i) {
             if ("".equals(formatDate[i])) {
                 continue;
@@ -67,21 +64,6 @@ public class Parser {
                 } else {
                     listOfNodes.getLast().setMessage(formatDate[i]);
 
-                }
-            }
-        }
-    }
-
-
-    public void getNameRoot() {
-        ArrayList<Node> arr = root.getChildNodes();
-
-        for (int i = 0; i < arr.size(); ++i) {
-           // System.out.println(arr.get(i).getName());
-            if (arr.get(i).getChildNodes().size() > 0) {
-                ArrayList<Node> children = arr.get(i).getChildNodes();
-                for (int j = 0; j < children.size(); ++j) {
-//                    System.out.println(children.get(j).getChildNodes().get(0).getName());
                 }
             }
         }
