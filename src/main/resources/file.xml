@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<company>
+    <name>IT-Heaven</name>
+    <offices>
+        <office floor="sdas" room="1">
+            <employees>
+            </employees>
+        </office>
+        <office floor="asd1" room="2asd">
+            <employees>
+            </employees>
+        </office>
+    </offices>
+</company>

@@ -1,0 +1,5 @@
+/.idea
+/target
+pom
+XMLParser
+src/test

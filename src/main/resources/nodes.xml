@@ -1,0 +1,16 @@
+
+<notes id="11111">
+    <note id="22222">
+        <to id="2222">Вася</to>
+        <from>Света</from>
+        <heading>Напоминание</heading>
+        <body>Позвони мне завтра!</body>
+    </note>
+    <note id="1as">
+        <to>Вася</to>
+        <from>Света</from>
+        <heading>Напоминание</heading>
+        <body>Позвони мне завтра!</body>
+    </note>
+</notes>
+
