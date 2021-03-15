@@ -6,7 +6,7 @@ public class Node {
     private String name;
     private ArrayList<Attribute> attributes = new ArrayList<>();
     private ArrayList<Node> childNodes = new ArrayList<Node>();
-    String message;
+    private String message;
 
     public Node() {}
 
@@ -37,10 +37,6 @@ public class Node {
 
     public void setChildNodes(Node child) {
         this.childNodes.add(child);
-    }
-
-    public ArrayList<Attribute> getAllAttribute() {
-        return attributes;
     }
 
     public void setMessage(String message) {
