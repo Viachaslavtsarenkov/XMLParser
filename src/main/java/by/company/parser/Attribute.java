@@ -2,14 +2,14 @@ package by.company.parser;
 
 public class Attribute {
     private String name;
-    private String content;
+    private String value;
 
     public Attribute() {
     };
 
-    public Attribute(String name, String content) {
+    public Attribute(String name, String value) {
         this.name = name;
-        this.content = content;
+        this.value = value;
     }
 
     public void setName(String name) {
@@ -18,6 +18,14 @@ public class Attribute {
 
     public String getName() {
         return name;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String content) {
+        this.value = content;
     }
 
 }

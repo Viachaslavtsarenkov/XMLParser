@@ -1,39 +1,39 @@
 package by.company.parser;
 
+import by.company.exception.XMLParserException;
 import java.io.*;
 import java.util.LinkedList;
 import java.util.regex.Pattern;
 
-public class Parser {
-    final String XML_FILE_PATH = "src/main/resources/nodes.xml";
-    StringBuffer date = new StringBuffer("");
-    Node root;
-    LinkedList<Node> listOfNodes = new LinkedList<>();
-    String formatDate[];
+public class XMLParser {
 
-    public Parser() {
-        readXMLData();
-        formattingDate();
-        createElements();
+    private final String openTagRegex= "<\\p{Alnum}+[\\p{Alnum}+=\"{1}\\p{Alnum}+\"{1}]*[>|/>]+";
+    private final String closeTagRegex = "</\\p{Alpha}+>";
+    private String data = "";
+    private Node root;
+    private LinkedList<Node> listOfNodes = new LinkedList<>();
+    private String formatDate[];
+
+    public XMLParser(){
     }
 
-    public void readXMLData() {
-        try {
-            File xmlFile = new File(XML_FILE_PATH);
-            FileReader reader = new FileReader(xmlFile);
-            BufferedReader buffer = new BufferedReader(reader);
+    public boolean readXMLData(String filePath) throws XMLParserException {
+        File xmlFile = new File(filePath);
+        try(BufferedReader buffer = new BufferedReader(new FileReader(xmlFile))) {
             String line = buffer.readLine();
             while (line != null) {
-                date.append(line);
+                data += line;
                 line = buffer.readLine();
             }
-        } catch (IOException e) {
-            System.out.println(e);
+
+        } catch (IOException err){
+            throw new XMLParserException(err);
         }
+        return true;
     }
 
     public void formattingDate() {
-        formatDate = date.toString()
+        formatDate = data.toString()
                 .replace(">", ">\n")
                 .replace("</", "\n</")
                 .split("\n");
@@ -43,29 +43,30 @@ public class Parser {
     }
 
     public void createElements() {
-        String openTagRegex= "<\\p{Alnum}+[ \\p{Alnum}+=\"{1}\\p{Alnum}+\"{1}]*[>|/>]+";
-        String closeTagRegex = "</\\p{Alpha}+>";
         Pattern patternCloseTag = Pattern.compile(closeTagRegex);
-        Pattern pattern = Pattern.compile(openTagRegex);
+        Pattern patternOpenTag = Pattern.compile(openTagRegex);
         for (int i = 0; i < formatDate.length; ++i) {
             if ("".equals(formatDate[i])) {
                 continue;
             }
-            if(pattern.matcher(formatDate[i]).matches() && root == null) {
+            if(patternOpenTag .matcher(formatDate[i]).matches() && root == null) {
                 root = new Node.NodeBuilder(formatDate[i]).build();
                 listOfNodes.addLast(root);
             } else if (listOfNodes.size() >= 1) {
-                if (pattern.matcher(formatDate[i]).matches()) {
+                if (patternOpenTag .matcher(formatDate[i]).matches()) {
                     Node current = new Node.NodeBuilder(formatDate[i]).build();
-                    listOfNodes.getLast().setChildNodes(current);
+                    listOfNodes.getLast().setChildNode(current);
                     listOfNodes.addLast(current);
                 } else if (patternCloseTag.matcher(formatDate[i]).matches()) {
                     listOfNodes.removeLast();
                 } else {
                     listOfNodes.getLast().setMessage(formatDate[i]);
-
                 }
             }
         }
+    }
+
+    public Node getRoot() {
+        return root;
     }
 }

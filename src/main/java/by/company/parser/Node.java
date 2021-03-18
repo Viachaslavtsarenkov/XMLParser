@@ -6,7 +6,7 @@ public class Node {
     private String name;
     private ArrayList<Attribute> attributes = new ArrayList<>();
     private ArrayList<Node> childNodes = new ArrayList<Node>();
-    String message;
+    private String message;
 
     public Node() {}
 
@@ -23,7 +23,7 @@ public class Node {
         return name;
     }
 
-    public void setAttribute(Attribute attribute) {
+    public void addAttribute(Attribute attribute) {
         this.attributes.add(attribute);
     }
 
@@ -31,7 +31,7 @@ public class Node {
         return childNodes;
     }
 
-    public void setChildNodes(Node child) {
+    public void setChildNode(Node child) {
         this.childNodes.add(child);
     }
 
@@ -56,7 +56,6 @@ public class Node {
             this.name = description[0];
             if (description.length != 1) {
                 for (int i = 1; i < description.length - 1; i += 2) {
-                    System.out.println(description[i]);
                     attributes.add(new Attribute(description[i], description[i + 1]));
                 }
            }
