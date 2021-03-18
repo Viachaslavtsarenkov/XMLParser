@@ -1,7 +1,6 @@
 package by.company.exception;
 
 public class XMLParserException extends Exception {
-    private static final long serialVersionUID = 1L;
 
     public XMLParserException() {
     }

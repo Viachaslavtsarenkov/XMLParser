@@ -27,7 +27,7 @@ public class Node {
         this.attributes.add(attribute);
     }
 
-    public ArrayList<Node> getChildNodes() {
+    public ArrayList<Node> getChildNode() {
         return childNodes;
     }
 
@@ -35,7 +35,7 @@ public class Node {
         this.childNodes.add(child);
     }
 
-    public ArrayList<Attribute> getAllAttribute() {
+    public ArrayList<Attribute> getAllAttributes() {
         return attributes;
     }
 
