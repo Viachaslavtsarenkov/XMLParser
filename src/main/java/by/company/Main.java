@@ -1,24 +1,15 @@
 package by.company;
 
-import by.company.exception.XMLParserException;
-import by.company.parser.XMLParser;
+import by.company.parser.Parser;
+import by.company.parser.impl.XMLParser;
+import by.company.entity.Node;
 
 public class Main {
     public static void main(String[] args) {
 
         final String XML_FILE_PATH = "src/main/resources/nodes.xml";
-        XMLParser parser = new XMLParser();
-        boolean response;
+        Parser parser = new XMLParser(XML_FILE_PATH);
+        Node root = parser.parse();
 
-        try {
-            response = parser.readXMLData(XML_FILE_PATH);
-        } catch (XMLParserException err){
-            response = false;
-        }
-
-        if (response) {
-            parser.formattingDate();
-            parser.createElements();
-        }
     }
 }
