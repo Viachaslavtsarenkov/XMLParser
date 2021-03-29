@@ -29,7 +29,7 @@ public class Node implements Serializable {
         this.attributes.add(attribute);
     }
 
-    public ArrayList<Node> getChildNode() {
+    public ArrayList<Node> getChildNodes() {
         return childNodes;
     }
 
@@ -93,4 +93,20 @@ public class Node implements Serializable {
     public int hashCode() {
         return Objects.hash(name, attributes, childNodes, content);
     }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for (Attribute attribute : attributes ) {
+            result +="\n" + attribute.toString();
+        }
+        if (content != null) {
+           result += "\n" + content;
+        }
+        for (Node child : childNodes ) {
+            result += child;
+        }
+        return result;
+    }
+
 }

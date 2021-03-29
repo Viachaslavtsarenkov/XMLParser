@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class XMLReader implements Reader, Closeable {
 
@@ -54,11 +55,11 @@ public class XMLReader implements Reader, Closeable {
         } else {
             if (index < formatData.length) {
                 blockData = formatData[index];
-                ++index;
             } else {
                 blockData = null;
             }
         }
+        ++index;
         return blockData;
     }
 

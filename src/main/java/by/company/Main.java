@@ -10,6 +10,6 @@ public class Main {
         final String XML_FILE_PATH = "src/main/resources/nodes.xml";
         Parser parser = new XMLParser(XML_FILE_PATH);
         Node root = parser.parse();
-
+        System.out.println(root);
     }
 }

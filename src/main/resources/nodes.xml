@@ -1,12 +1,12 @@
 
 <notes>
-    <note>
-        <to id="2222">Вася</to>
+    <note id="1">
+        <to >Вася</to>
         <from>Света</from>
         <heading>Напоминание</heading>
         <body>Позвони мне завтра!</body>
     </note>
-    <note id="1_cgjas">
+    <note id="2">
    <to>Вася
 
                 </to>
@@ -17,7 +17,7 @@
 
 
              оминание</heading>
-        <body>Позвони мне      завтра!</body>
+        <body>Позвони мне      сегодня!</body>
     </note>
 </notes>
 

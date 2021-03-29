@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class XMLParser implements Parser {
 
-    private final String openTagRegex= "<[a-zA-Z]+\s+[[a-zA-Z]+=\"{1}[a-z_]+\"{1}]*[>|/>]+";
+    private final String openTagRegex= "<[a-zA-Z]+\s*[[a-zA-Z]+=\"{1}[a-zA-Z_1-9]+\"{1}]*>+";
     private final String closeTagRegex = "</\\p{Alpha}+>";
     private String path;
     private Node root;
