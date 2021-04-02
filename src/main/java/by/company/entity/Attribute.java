@@ -52,6 +52,6 @@ public class Attribute implements Serializable {
 
     @Override
     public String toString() {
-        return value;
+        return getClass().getName() + "@" + Integer.toHexString(hashCode());
     }
 }

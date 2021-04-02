@@ -96,15 +96,19 @@ public class Node implements Serializable {
 
     @Override
     public String toString() {
+        return getClass().getName() + "@" + Integer.toHexString(hashCode());
+    }
+
+    public String writeAllData() {
         String result = "";
         for (Attribute attribute : attributes ) {
-            result +="\n" + attribute.toString();
+            result +="\n" + attribute.getValue();
         }
         if (content != null) {
-           result += "\n" + content;
+            result += "\n" + content;
         }
         for (Node child : childNodes ) {
-            result += child;
+            result += child.writeAllData();
         }
         return result;
     }
