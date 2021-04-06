@@ -47,7 +47,11 @@ public class Attribute implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, value);
+        int result = 1;
+        result = 31 * (name == null ? 0 : name.hashCode() + value == null ?
+                0 : value.hashCode());
+
+        return result;
     }
 
     @Override

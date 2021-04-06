@@ -91,7 +91,10 @@ public class Node implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, attributes, childNodes, content);
+        int result = 0;
+        result = 31 * (name == null ? 0 : name.hashCode() +
+        content == null ? 0 : content.hashCode());
+        return result;
     }
 
     @Override
